@@ -1,0 +1,35 @@
+<li class="tweet-box" data-ms-range="{{created_at_ms}}">
+  <div class="tweet-header">
+    <div class="tweet-author-avatar">
+      <figure>
+        <img class="" src="{{user.profile_image_url}}" alt="">
+      </figure>
+    </div>
+
+    <a href="http://twitter.com/{{user.screen_name}}" class="tweet-author" target="_blank">
+      <span class="identity-name">{{user.name}}</span>
+      <span class="screen-name">{{user.screen_name}}</span>
+    </a>
+  </div>
+
+  <a href="http://twitter.com/statuses/{{id_str}}" target="_blank">
+    <blockquote class="" data-tweet-id="{{id}}">
+      <div class="tweet-body">
+        <p class="tweet-text">{{text}}</p>
+      </div>
+
+      <div class="tweet-metadata">
+        <time class="" datetime="{{created_at_formatted}}" title="Time posted: {{created_at_formatted}}" data-original="{{created_at}}">{{created_at_formatted}}</time>
+      </div>
+    </blockquote>
+  </a>
+  <div class="tweet-tools">
+    <ul class="unstyled">
+      <li><a href="https://twitter.com/intent/tweet?in_reply_to={{id_str}}" target="_blank">
+          <i class="icon-default icon-reply fa fa-reply"></i></a>
+      <li><a href="https://twitter.com/intent/retweet?tweet_id={{id_str}}" target="_blank">
+          <i class="icon-default icon-retweet fa fa-retweet"></i>{{retweeted_status.retweet_count}}</a>
+      <li><a href="https://twitter.com/intent/like?tweet_id={{id_str}}" target="_blank">
+          <i class="icon-default icon-favorite fa fa-heart"></i>{{user.favorite_count }}</a>
+  </div>
+</li>

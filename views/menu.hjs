@@ -1,0 +1,88 @@
+<nav class="js-navbar side-frame dock-right menu">
+  <ul class="unstyled">
+    <li>
+      <a class="js-toggle tooltip" href="javascript:;" data-target=".js-layout-options">
+        Modify Layout
+        <span class="tooltiptext">Page layout</span>
+      </a>
+
+      <ul class="js-layout-options unstyled sym-table">
+        <li>
+          <a href="javascript:;" class="js-settings tooltip" data-option="layout-rows">
+            <i class="icon-default icon-layout layout-rows"></i>Rows
+            <span class="tooltiptext">Accounts in rows</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;" class="js-settings tooltip" data-option="layout-columns">
+            <i class="icon-default icon-layout  layout-columns"></i>Columns
+            <span class="tooltiptext">Accounts in columns</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a class="js-toggle tooltip" href="javascript:;" data-target=".js-order-options">
+        Sort User Feeds
+        <span class="tooltiptext">The order of the columns.</span>
+      </a>
+
+      <ul class="js-order-options unstyled sym-table">
+       <li>
+          <a href="javascript:;" class="js-settings tooltip" data-option="order-asc">
+            <i class="icon-default icon-layout  order-asc"></i>Sort Asc
+            <span class="tooltiptext">Sort accounts Asc</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;" class="js-settings tooltip" data-option="order-desc">
+            <i class="icon-default icon-layout  order-desc"></i>Sort Desc
+            <span class="tooltiptext">Sort accounts Desc</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;" class="js-settings tooltip" data-option="order-mix">
+            <i class="icon-default icon-layout  order-mix"></i>Sort Rand
+            <span class="tooltiptext">Sort accounts Randomly</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a class="js-toggle tooltip" href="javascript:;" data-target=".js-theme-options">
+        Change Theme
+        <span class="tooltiptext">The overall palette/skin of the page.</span>
+      </a>
+      <ul class="js-theme-options unstyled sym-table">
+        <li>
+          <a href="javascript:;" class="js-settings tooltip" data-option="theme-wireframe">
+            <i class="icon-default icon-theme theme-wireframe"></i>wireframe
+            <span class="tooltiptext">wireframe</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;" class="js-settings tooltip" data-option="theme-marine">
+            <i class="icon-default icon-theme  theme-marine"></i>marine
+            <span class="tooltiptext">marine</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;" class="js-settings tooltip" data-option="theme-burnt">
+            <i class="icon-default icon-theme  theme-burnt"></i>burnt
+            <span class="tooltiptext">burnt</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+        <a class="js-settings tooltip" data-option="reset" href="javascript:;" rel="nofollow">
+          Reset All
+          <span class="tooltiptext">Reset to default all settings.</span>
+        </a>
+  </ul>
+</nav>
+
+<a class="js-toggle menu-trigger is-active" href="javascript:;" data-target=".js-navbar">
+  <i class="icon-default icon-menu"></i>
+  Menu
+</a>

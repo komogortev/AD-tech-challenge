@@ -1,0 +1,109 @@
+//*VARIABLES*/
+$root-font: 16px !default;
+$sans-serif: "Roboto", sans-serif !default;
+$gradation-step: 10%;
+
+$break-xlarge: px2rem(1200px);
+$break-large:  px2rem(980px);
+$break-medium: px2rem(768px);
+$break-small:  px2rem(400px);
+$break-xsmall: px2rem(320px);
+
+/*WIREFRAME*/
+$primary-color: #111111;
+$inverted-primary: #f1f1f1;
+$secondary-color: #cc0000;
+$inverted-secondary: #5d7cdd;
+$bg-fog: rgba(255,255,255,.85);
+$bg-smoke: rgba(0,0,0,.85);
+$bg-muted: lighten($primary-color, 50%);
+$bg-primary: $primary-color;
+$bg-secondary: $secondary-color;
+
+/*MARINE*/
+$marine-primary-color: #00072d;
+$marine-inverted-primary: #a6e1fa;
+$marine-secondary-color: #0a2463;
+$marine-inverted-secondary: #5eb1bf;
+$marine-extra: #cdedf6;
+$marine-bg-fog: rgba(255,255,255,.85);
+$marine-bg-smoke: rgba(0, 7, 45,.85);
+$marine-bg-muted: lighten($marine-primary-color, 50%);
+$marine-bg-primary: $marine-primary-color;
+$marine-bg-secondary: $marine-secondary-color;
+
+/*BURNT*/
+$burnt-primary-color: #130303;
+$burnt-inverted-primary: #ffcdbc;
+$burnt-secondary-color: #f5853f;
+$burnt-inverted-secondary: #7c3626;
+$burnt-extra: #2d080a;
+$burnt-bg-fog: rgba(255, 205, 188,.85);
+$burnt-bg-smoke: rgba(19, 3, 3,.85);
+$burnt-bg-muted: lighten($burnt-primary-color, 50%);
+$burnt-bg-primary: $burnt-primary-color;
+$burnt-bg-secondary: $burnt-secondary-color;
+
+//PLACEHOLDERS
+%default-box {
+  display: block;
+  margin: 0;
+  padding:0;
+  font-size: $root-font;
+  box-sizing: border-box;
+}
+%default-border-radius{
+  border-radius: px2rem(4px);
+}
+
+%center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+}
+
+//*MIXINS*/
+@mixin default-box {
+  display: block;
+  margin: 0;
+  padding:0;
+  font-size: $root-font;
+  box-sizing: border-box;
+}
+
+@mixin toggle-transition {
+  height: 0;
+  max-height: 0;
+  transition: max-height .75s ease;
+}
+
+@mixin toggle-active {
+  height: auto;
+  max-height: px2rem(999px);
+}
+
+//*FUNCTIONS*/
+@function step2percent($step){
+  @return ($step * $gradation-step);
+}
+
+@function darkenBy($base, $step) {
+  @return darken($base, step2percent($step));
+}
+
+@function lightenBy($base, $step) {
+  @return lighten($base, step2percent($step));
+}
+
+@function randomNum($min, $max) {
+  $rand: random();
+  $randomNum: $min + floor($rand * (($max - $min) + 1));
+  @return $randomNum;
+}
+
+@function px2rem($target) {
+  @return ($target / $root-font) * 1rem;
+}

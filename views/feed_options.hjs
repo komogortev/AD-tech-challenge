@@ -1,0 +1,28 @@
+<div class="js-{{id}}-options user-options">
+  <a class="js-toggle btn-toggle-options" data-target=".js-{{id}}-options" href="javascript:;" =>
+    <i class="icon-default fa fa-gear"></i>
+    <i class="icon-default fa fa-toggle-off"></i>
+    <i class="icon-default fa fa-toggle-on"></i>
+  </a>
+
+  <ul class="unstyled options-container">
+    <li>
+      <span>
+        Date Range: <span class="js-date-tooltip"></span>
+      </span>
+      <span>
+        <div id="{{id}}-tw-date" class="js-date-filter range-slider" data-type="date"></div>
+      </span>
+
+    </li>
+
+    <li>
+      <span>
+        Max tweets to show: <span class="js-amount-tooltip"></span>
+      </span>
+      <span>
+        <div id="{{id}}-tw-amount" class="js-amount-filter range-slider" data-type="amount"></div>
+      </span>
+    </li>
+  </ul>
+</div>

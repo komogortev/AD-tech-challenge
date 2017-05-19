@@ -1,0 +1,33 @@
+@import "_variables";
+@import "_icons";
+@import "_layout";
+@import "./theme-marine/_layout_marine";
+@import "./theme-burnt/_layout_burnt";
+@import "_elements";
+@import "./theme-marine/_elements_marine";
+@import "./theme-burnt/_elements_burnt";
+@import "_menu";
+
+
+//*CONTENT*/
+.figure-wrapper {
+  @include default-box;
+  max-width: px2rem(230px);
+  max-height: px2rem(230px);
+  border: px2rem(4px) solid $inverted-primary;
+  border-radius: 50%;
+  margin: px2rem(10px);
+  transform: translate(0, -20%);
+  box-shadow: px2rem(5px) px2rem(5px) px2rem(10px) rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+
+  @media screen and (max-width: $break-medium) {
+    margin: px2rem(10px) auto;
+  }
+
+  img {
+    display: inline-block;
+     width: 100%;
+     height: auto;
+  }
+}

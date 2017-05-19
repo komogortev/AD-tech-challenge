@@ -1,0 +1,35 @@
+{
+  "name": "appdirect",
+  "version": "0.0.0",
+  "description": "pull 30 tweets",
+  "main": "app.js",
+  "repository": "",
+  "author": "Mostafa Eweda <mo.eweda@gmail.com>",
+  "engines": {
+    "node": "6.9.4",
+    "npm": "3.10.10"
+  },
+  "dependencies": {
+    "async": "~0.2.8",
+    "body-parser": "~1.16.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.0",
+    "express": "~4.14.1",
+    "hjs": "~0.0.6",
+    "morgan": "~1.7.0",
+    "node-cache": "^4.1.1",
+    "node-persist": "^2.0.11",
+    "node-sass-middleware": "^0.9.8",
+    "nodemon": "^1.11.0",
+    "portfinder": "^1.0.13",
+    "prompt": "^1.0.0",
+    "qs": "^6.4.0",
+    "request": "^2.81.0",
+    "serve-favicon": "~2.3.2",
+    "socket.io": "~0.9.14",
+    "twitter": "^1.7.0"
+  },
+  "scripts": {
+    "start": "node ./bin/www"
+  }
+}

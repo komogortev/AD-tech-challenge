@@ -1,0 +1,373 @@
+@import "_variables";
+
+.theme-marine {
+  background: $marine-inverted-primary;
+
+  a {
+    color: $marine-primary-color;
+  }
+
+  .btn {
+    @include default-box;
+    padding: px2rem(4px) px2rem(10px);
+    color: $marine-primary-color;
+    background: $marine-bg-muted;
+    border: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: lighten($marine-primary-color, 20%);
+      background: lighten($marine-bg-muted, 20%);
+    }
+
+    &.btn-primary {
+      color: $marine-inverted-primary;
+      background: $marine-bg-primary;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: lighten($marine-inverted-primary, 20%);
+        background: lighten($marine-bg-primary, 20%);
+      }
+
+    }
+
+    &.btn-secondary {
+      color: $marine-inverted-secondary;
+      background: $marine-bg-secondary;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: lighten($marine-inverted-secondary, 20%);
+        background: lighten($marine-bg-secondary, 20%);
+      }
+
+    }
+
+  }
+
+  .tweets-feed {
+
+    h2 {
+      @include default-box;
+      padding: px2rem(4px) px2rem(65px) px2rem(4px) px2rem(10px);
+      margin: px2rem(4px) px2rem(4px) 0;
+      font-size: px2rem(20px);
+      text-align: center;
+      border-radius: px2rem(4px);
+      color: $marine-secondary-color;
+      box-shadow: inset 0 0 px2rem(30px) rgba(94, 177, 191, 1);
+      text-ellipsis: ellipsis;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    > li {
+      max-width: px2rem(520px);
+      min-width: px2rem(280px);
+    }
+
+    .feed-header {
+      @include default-box;
+      position: relative;
+
+      .user-options {
+        margin-top: 0;
+
+        .btn-toggle-options {
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-size: px2rem(26px);
+          color: $marine-primary-color;
+          transform: translate(-25%, 0);
+          padding-right: 1em;
+
+          [class^=icon] {
+            font-size: px2rem(18px);
+            color: lightenBy($marine-primary-color, 4);
+          }
+
+          .fa-gear {
+            transition: transform .5s;
+            transform: translateY(-10%);
+            font-size: .75em;
+          }
+
+          .fa-toggle-on,
+          .fa-toggle-off {
+            display: none;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            left: auto;
+            transform: translate(0, -50%) rotate(90deg);
+          }
+
+          .fa-toggle-off {
+            display: block;
+          }
+
+        }
+
+        .options-container {
+          @include default-box;
+          @include toggle-transition;
+          background: $marine-bg-smoke;
+          margin: 0 px2rem(10px);
+          border-radius: 0 0 px2rem(4px) px2rem(4px);
+          overflow: hidden;
+
+          li {
+            display: flex;
+            padding: px2rem(4px);
+            color: $marine-inverted-primary;
+
+            > span {
+              flex: 1;
+              padding: 0 px2rem(4px);
+              font-size: px2rem(12px);
+
+              > span {
+                display: block;
+               }
+
+            }
+
+            .range-slider {
+              margin: px2rem(4px) px2rem(10px);
+              height: px2rem(10px);
+              position: relative;
+              border-radius: 0;
+              left: px2rem(10px);
+              width: calc(100% - 30px);
+
+              .noUi-connect {
+                background: $marine-bg-muted;
+              }
+
+              .noUi-handle {
+                width: px2rem(21px);
+                height: px2rem(21px);
+
+                &::before {
+                  left: px2rem(7px);
+                  top: px2rem(2px);
+                }
+
+                &::after {
+                  left: px2rem(10px);
+                  top: px2rem(2px);
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+        &.is-active {
+
+          .options-container {
+            @include toggle-active;
+          }
+
+          .fa-gear {
+            transform: translateY(-10%) rotate(90deg);
+          }
+
+          .fa-toggle-on {
+            display: block;
+          }
+
+          .fa-toggle-off {
+            display: none;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  .tweet-box {
+    @include default-box;
+    color: $marine-primary-color;
+    background: $marine-extra;
+    border-radius: px2rem(4px) px2rem(4px);
+    border: none;
+    padding: px2rem(14px);
+    margin: px2rem(6px);
+    box-shadow: px2rem(2px) px2rem(2px) px2rem(4px) $marine-inverted-secondary;
+    overflow: hidden;
+    cursor: pointer;
+
+    > a {
+      color: inherit;
+    }
+
+    .tweet-header {
+      display: flex;
+      position: relative;
+      padding-left: px2rem(45px);
+      white-space: nowrap;
+
+      .tweet-author-avatar {
+        position: absolute;
+        display: inline-block;
+        top: 0;
+        left: 0;
+        max-width: px2rem(36px);
+        max-height: px2rem(36px);
+        overflow: hidden;
+        background-color: transparent;
+        border-radius: px2rem(4px);
+
+        figure {
+          margin: 0;
+        }
+
+      }
+
+      .tweet-author {
+        display: flex;
+        flex-direction: column;
+        margin-top: px2rem(2px);
+        line-height: 0;
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: inherit;
+        text-decoration: none;
+        white-space: nowrap;
+        word-wrap: normal;
+
+        span {
+          display: inline-block;
+          white-space: nowrap;
+          word-wrap: normal;
+          line-height: 1.2em;
+
+          &.identity-name {
+            font-weight: 700;
+          }
+
+          &.screen-name {
+            color: lightenBy($marine-primary-color, 4);
+
+            &::before {
+              content: "@";
+              display: inline-block;
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+    .tweet-body {
+
+      p.tweet-text {
+        font-size: .9em;
+        margin: px2rem(10px) 0;
+      }
+
+    }
+
+    .tweet-metadata {
+      color: lightenBy($marine-primary-color, 4);
+      font-size: .8em;
+    }
+
+    .tweet-tools {
+      margin-top: px2rem(15px);
+      color: lightenBy($marine-primary-color, 4);
+
+      > ul {
+        list-style: none;
+        display: flex;
+        width: auto;
+        align-content: space-between;
+
+        li {
+          display: inline-block;
+          margin: 0 px2rem(10px) 0 0;
+          width: auto;
+        }
+
+      }
+
+      .fa-heart,
+      .fa-reply,
+      .fa-retweet,
+      .fa-favorite {
+        color: $marine-secondary-color;
+
+        &:hover,
+        &:active,
+        &:focus {
+          color: darkenBy($marine-inverted-secondary, 2);
+        }
+
+      }
+
+    }
+
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+
+    .tooltiptext {
+      opacity: 0;
+      width: px2rem(130px);
+      position: absolute;
+      top: 0;
+      left: px2rem(10px);
+      background-color: $marine-bg-smoke;
+      color: $marine-inverted-primary;
+      font-size: px2rem(12px);
+      text-align: center;
+      padding: px2rem(5px) 0;
+      border-radius: px2rem(2px);
+      transform: translate(-100%, -50%);
+      visibility: hidden;
+      transition: opacity 1s ease-out;
+      transition-delay: 1.75s;
+      z-index: 1;
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        transform: translate(75%, 50%) rotate(30deg);
+        border-top: px2rem(8px) solid transparent;
+        border-right: px2rem(8px) solid transparent;
+        border-bottom: px2rem(8px) solid transparent;
+        border-left: px2rem(20px) solid $marine-bg-smoke;
+      }
+
+    }
+
+    &:hover .tooltiptext {
+      opacity: 1;
+      visibility: visible;
+    }
+
+  }
+
+}

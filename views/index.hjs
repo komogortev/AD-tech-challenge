@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ndko {{ title }}</title>
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css' />
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
+    <link rel="stylesheet" href="/vendor/noUiSlider/nouislider.min.css" >
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <header><h1>Twitter REST API Technical Challenge</h1></header>
+
+    <div class="site-wrapper">
+
+      {{> menu}}
+
+      <section class="js-settings-frame slide main-frame">
+        <div class="content-box tweets-wrapper flex-row">
+          <ul class="user-feed  unstyled">
+
+           {{#data}}
+              <li class="js-feed-container scroll-wrapper">
+                <ol id="posts-list" class="tweets-feed unstyled">
+                  <li class="feed-header">
+                    <h2>{{id}}</h2>
+                    {{> feed_options}}
+                  </li>
+
+                  {{#tweets}}
+                    {{> tweet}}
+                 {{/tweets}}
+                </ol>
+              </li>
+            {{/data}}
+
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    {{> footer}}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/vendor/noUiSlider/nouislider.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/javascripts/store.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/javascripts/core.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/javascripts/filter.js"></script>
+
+  </body>
+</html>

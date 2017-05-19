@@ -1,0 +1,195 @@
+@import "_variables";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+html,
+body {
+  @include default-box;
+  font: $root-font $sans-serif;
+  max-width: 100vw;
+  min-width: px2rem(120px);
+
+  > header {
+    @include default-box;
+    padding: 0 px2rem(80px) 0 px2rem(15px);
+    margin: 0;
+    white-space: normal;
+    background: $inverted-primary;
+
+    h1 {
+      font-size: 1.5em;
+      line-height: 1.75em;
+      padding: .25em;
+      margin: 0;
+    }
+  }
+
+  > footer {
+    @include default-box;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    min-width: $break-xsmall;
+    width: 100vw;
+    padding: px2rem(4px) 0 0;
+    font-size: px2rem(10px);
+    color: $primary-color;
+    text-shadow: 0 0 2px rgba(0,0,0,.5);
+    text-align: center;
+    transform: translate(-50%, 0);
+    vertical-align: middle;
+    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 36%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 36%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 36%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+    a {
+      display: inline-block;
+      width: auto;
+      height: auto;
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.unstyled {
+  list-style: none;
+}
+
+.site-wrapper {
+  position: relative;
+}
+
+.main-frame {
+  @include default-box;
+  width: 100%;
+  min-width: $break-xsmall;
+  position: relative;
+}
+
+.side-frame {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  &.dock-top {
+    bottom: auto;
+    transform: translate(0, -100%);
+  }
+  &.dock-right {
+     left: auto;
+     transform: translate(100%,0);
+  }
+  &.dock-bottom {
+    top: auto;
+    transform: translate(0, 100%);
+  }
+  &.dock-left {
+    right: auto;
+    transform: translate(-100%, 0);
+  }
+
+  &.shifted {
+    transform: translate(0, 0);
+  }
+}
+
+ul {
+  @include default-box;
+
+  &.unstyled {
+    list-style: none;
+  }
+}
+
+a {
+  color: $secondary-color;
+}
+
+section {
+  @include default-box;
+  position: relative;
+  width: 100%;
+
+
+  &.slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: px2rem(20px) 0;
+    box-shadow: inset px2rem(2px) px2rem(2px) px2rem(6px) $bg-smoke;
+
+    .content-box {
+      @include default-box;
+      margin: px2rem(10px);
+      max-width: 100%;
+
+      &.tweets-wrapper {
+        background: rgba(255,255,255,.5);
+
+        > ul.user-feed {
+          display: flex;
+          max-width: $break-xlarge;
+          flex-wrap: wrap;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: stretch;
+
+          @media screen and (max-width: $break-medium) {
+            flex-direction: column;
+          }
+
+          > li {
+            @include default-box;
+            flex:1;
+            list-style: none;
+
+            &:nth-child(3n-5) {order:1;}
+            &:nth-child(3n-4) {order:2;}
+            &:nth-child(3n-3) {order:3;}
+          }
+        }
+
+        .scroll-wrapper {
+          min-width: $break-xsmall;
+        }
+
+      }
+    }
+
+    //@todo refactor into parent called from child
+    &.layout-rows {
+      .content-box.tweets-wrapper .user-feed {flex-direction: column;}
+      .tweets-feed {
+        display: flex;
+        flex-wrap:wrap;
+
+        > li:not(.tweet-box) {max-width: 100%; width: 100%;}
+        .tweet-box {max-width: $break-xsmall;}
+      }
+    }
+
+    &.layout-reversed {
+      .content-box.tweets-wrapper .user-feed > li{
+        &:nth-child(3n-5) {order:3;}
+        &:nth-child(3n-4) {order:2;}
+        &:nth-child(3n-3) {order:1;}
+      }
+    }
+
+  }
+}
+

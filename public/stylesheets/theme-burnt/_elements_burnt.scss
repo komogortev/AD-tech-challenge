@@ -1,0 +1,373 @@
+@import "_variables";
+
+.theme-burnt {
+  background: $burnt-inverted-secondary;
+
+  .btn {
+    @include default-box;
+    padding: px2rem(4px)  px2rem(10px);
+    color: $burnt-primary-color;
+    background: $burnt-bg-muted;
+    border: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: lighten($burnt-primary-color, 20%);
+      background: lighten($burnt-bg-muted, 20%);
+    }
+
+    &.btn-primary {
+      color: $burnt-inverted-primary;
+      background: $burnt-bg-primary;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: lighten($burnt-inverted-primary, 20%);
+        background: lighten($burnt-bg-primary, 20%);
+      }
+
+    }
+
+    &.btn-secondary {
+      color: $burnt-inverted-secondary;
+      background: $burnt-bg-secondary;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: lighten($burnt-inverted-secondary, 20%);
+        background: lighten($burnt-bg-secondary, 20%);
+      }
+
+    }
+
+  }
+
+  .tweets-feed {
+
+    a {
+      color: $burnt-secondary-color;
+    }
+
+    h2 {
+      @include default-box;
+      padding: px2rem(4px) px2rem(65px) px2rem(4px) px2rem(10px);
+      margin: px2rem(4px);
+      font-size: px2rem(20px);
+      text-align: center;
+      border-radius: px2rem(4px);
+      color: $burnt-inverted-secondary;
+      background: $burnt-secondary-color;
+      box-shadow: px2rem(2px) px2rem(2px) px2rem(10px) $burnt-bg-smoke;
+      text-ellipsis: ellipsis;
+      white-space: nowrap;
+    }
+
+    > li {
+      max-width: px2rem(520px);
+      min-width: px2rem(280px);
+    }
+
+    .feed-header {
+      @include default-box;
+      position: relative;
+
+      .user-options {
+        margin: px2rem(4px) px2rem(7px);
+        border-radius: px2rem(4px);
+
+        .btn-toggle-options {
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-size: px2rem(26px);
+          color: $burnt-primary-color;
+          transform: translate(-25%, 0);
+          padding-right: 1em;
+
+          [class^=icon] {
+            font-size: px2rem(18px);
+            color: lightenBy($burnt-primary-color, 4);
+          }
+
+          .fa-gear {
+            transition: transform .5s;
+            transform: translateY(-10%);
+            font-size: .75em;
+          }
+
+          .fa-toggle-on,
+          .fa-toggle-off {
+            display: none;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            left: auto;
+            transform: translate(0, -50%) rotate(90deg);
+          }
+
+          .fa-toggle-off {
+            display: block;
+          }
+
+        }
+
+        .options-container {
+          @include default-box;
+          @include toggle-transition;
+          background: $burnt-bg-smoke;
+          border-radius: px2rem(4px);
+          box-shadow: px2rem(2px) px2rem(2px) px2rem(4px) $burnt-bg-smoke;
+          overflow: hidden;
+
+          li {
+            display: flex;
+            padding: px2rem(4px);
+            color: $burnt-inverted-primary;
+
+            > span {
+              flex: 1;
+              padding: 0 px2rem(4px);
+              font-size: px2rem(12px);
+
+              > span {
+                display: block;
+
+               }
+            }
+
+            .range-slider {
+              margin: px2rem(4px) px2rem(10px);
+              height: px2rem(10px);
+              position: relative;
+              border-radius: 0;
+              left: px2rem(10px);
+              width: calc(100% - 30px);
+
+              .noUi-connect {
+                background: $burnt-bg-muted;
+              }
+
+              .noUi-handle {
+                width: px2rem(10px);
+                height: px2rem(21px);
+
+                &::before {
+                  left: px2rem(7px);
+                  top: px2rem(2px);
+                }
+
+                &::after {
+                  left: px2rem(10px);
+                  top: px2rem(2px);
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+        &.is-active {
+
+          .options-container{
+            @include toggle-active;
+          }
+
+          .fa-gear {
+            transform: translateY(-10%) rotate(90deg);
+          }
+
+          .fa-toggle-on {
+            display: block;
+          }
+
+          .fa-toggle-off {
+            display: none;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  .tweet-box {
+    @include default-box;
+    color: $burnt-primary-color;
+    background: $burnt-inverted-primary;
+    border-radius: px2rem(4px) px2rem(4px);
+    border: none;
+    padding: px2rem(14px);
+    margin: px2rem(6px);
+    box-shadow: inset 0 0 px2rem(8px) $burnt-bg-smoke;
+    overflow: hidden;
+    cursor: pointer;
+
+    > a {
+      color: inherit;
+    }
+
+    .tweet-header {
+      display: flex;
+      position: relative;
+      padding-left: px2rem(45px);
+      white-space: nowrap;
+
+      .tweet-author-avatar {
+        position: absolute;
+        display: inline-block;
+        top: 0;
+        left: 0;
+        max-width: px2rem(36px);
+        max-height: px2rem(36px);
+        overflow: hidden;
+        background-color: transparent;
+        border-radius: px2rem(4px);
+
+        figure {
+          margin: 0;
+        }
+
+      }
+
+      .tweet-author {
+        display: flex;
+        flex-direction: column;
+        margin-top: px2rem(2px);
+        line-height: 0;
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: inherit;
+        text-decoration: none;
+        white-space: nowrap;
+        word-wrap: normal;
+
+        span {
+          display: inline-block;
+          white-space: nowrap;
+          word-wrap: normal;
+          line-height: 1.2em;
+
+          &.identity-name {
+            font-weight: 700;
+          }
+
+          &.screen-name {
+            color: lightenBy($burnt-primary-color, 4);
+
+            &::before {
+              content: "@";
+              display: inline-block;
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+    .tweet-body {
+
+      p.tweet-text {
+        margin: px2rem(15px) 0;
+      }
+
+    }
+
+    .tweet-metadata {
+      color: lightenBy($burnt-primary-color, 4);
+      font-size: .8em;
+    }
+
+    .tweet-tools {
+      margin-top: px2rem(15px);
+      color: lightenBy($burnt-primary-color, 4);
+
+      > ul {
+        list-style: none;
+        display: flex;
+        width: auto;
+        align-content: space-between;
+
+        li {
+          display: inline-block;
+          margin: 0 px2rem(10px) 0 0;
+          width: auto;
+        }
+
+      }
+
+      .fa-heart,
+      .fa-reply,
+      .fa-retweet,
+      .fa-favorite {
+        color: lightenBy($burnt-primary-color, 4);
+
+        &:hover,
+        &:active,
+        &:focus {
+          color: $burnt-primary-color;
+        }
+
+      }
+
+    }
+
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+
+    .tooltiptext {
+      opacity: 0;
+      width: px2rem(130px);
+      position: absolute;
+      top: 0;
+      left: px2rem(10px);
+      background-color: $burnt-bg-smoke;
+      color: $burnt-inverted-primary;
+      font-size: px2rem(12px);
+      text-align: center;
+      padding: px2rem( 5px) 0;
+      border-radius: px2rem(2px);
+      transform: translate(-100%, -50%);
+      visibility: hidden;
+      transition: opacity 1s ease-out;
+       transition-delay: 1.75s;
+      z-index: 1;
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        transform: translate(75%, 50%) rotate(30deg);
+        border-top: px2rem(8px) solid transparent;
+        border-right: px2rem(8px) solid transparent;
+        border-bottom: px2rem(8px) solid transparent;
+        border-left: px2rem(20px) solid $burnt-bg-smoke;
+      }
+
+    }
+
+    &:hover .tooltiptext {
+      opacity: 1;
+      visibility: visible;
+    }
+
+  }
+
+}
