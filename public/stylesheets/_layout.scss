@@ -170,26 +170,25 @@ section {
       }
     }
 
-    //@todo refactor into parent called from child
-    &.layout-rows {
-      .content-box.tweets-wrapper .user-feed {flex-direction: column;}
-      .tweets-feed {
-        display: flex;
-        flex-wrap:wrap;
-
-        > li:not(.tweet-box) {max-width: 100%; width: 100%;}
-        .tweet-box {max-width: $break-xsmall;}
-      }
-    }
-
-    &.layout-reversed {
-      .content-box.tweets-wrapper .user-feed > li{
-        &:nth-child(3n-5) {order:3;}
-        &:nth-child(3n-4) {order:2;}
-        &:nth-child(3n-3) {order:1;}
-      }
-    }
-
   }
 }
 
+//@todo refactor into parent called from child
+.layout-rows {
+  .content-box.tweets-wrapper .user-feed {flex-direction: column;}
+  .tweets-feed {
+    display: flex;
+    flex-wrap:wrap;
+
+    > li:not(.tweet-box) {max-width: 100%; width: 100%;}
+    .tweet-box {max-width: $break-xsmall;}
+  }
+}
+
+.layout-reversed {
+  .content-box.tweets-wrapper .user-feed > li{
+    &:nth-child(3n-5) {order:3;}
+    &:nth-child(3n-4) {order:2;}
+    &:nth-child(3n-3) {order:1;}
+  }
+}
