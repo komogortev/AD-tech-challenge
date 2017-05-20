@@ -37,7 +37,7 @@ nav.menu {
   min-width: px2rem180px();
   height: 100vh;
   margin: 0;
-  padding: px2rem(60px) 0;
+  padding: px2rem(60px) px2rem(8px);
   color: $primary-color;
   background: $bg-fog;
   box-sizing: border-box;

@@ -314,22 +314,18 @@ section {
               order: 3; }
         section.slide .content-box.tweets-wrapper .scroll-wrapper {
           min-width: 20rem; }
-    section.slide.layout-rows .content-box.tweets-wrapper .user-feed {
-      flex-direction: column; }
-    section.slide.layout-rows .tweets-feed {
-      display: flex;
-      flex-wrap: wrap; }
-      section.slide.layout-rows .tweets-feed > li:not(.tweet-box) {
-        max-width: 100%;
-        width: 100%; }
-      section.slide.layout-rows .tweets-feed .tweet-box {
-        max-width: 20rem; }
-    section.slide.layout-reversed .content-box.tweets-wrapper .user-feed > li:nth-child(3n-5) {
-      order: 3; }
-    section.slide.layout-reversed .content-box.tweets-wrapper .user-feed > li:nth-child(3n-4) {
-      order: 2; }
-    section.slide.layout-reversed .content-box.tweets-wrapper .user-feed > li:nth-child(3n-3) {
-      order: 1; }
+
+.layout-rows .slide .content-box.tweets-wrapper .user-feed {
+  flex-direction: column; }
+
+.layout-rows .tweets-feed {
+  display: flex;
+  flex-wrap: wrap; }
+  .layout-rows .tweets-feed > li:not(.tweet-box) {
+    max-width: 100%;
+    width: 100%; }
+  .layout-rows .tweets-feed .tweet-box {
+    max-width: 20rem; }
 
 /*WIREFRAME*/
 /*MARINE*/
@@ -639,6 +635,16 @@ section {
     opacity: 1;
     visibility: visible; }
 
+.js-drop-box.drag-on *:not(:active) {
+  pointer-events: none; }
+
+.js-drag-box {
+  cursor: move; }
+  .js-drag-box:active {
+    cursor: grab !important; }
+  .js-drag-box.in-transit {
+    opacity: .5; }
+
 /*WIREFRAME*/
 /*MARINE*/
 /*BURNT*/
@@ -739,6 +745,7 @@ section {
         overflow: hidden; }
         .theme-marine .tweets-feed .feed-header .user-options .options-container li {
           display: flex;
+          flex-direction: column;
           padding: 0.25rem;
           color: #a6e1fa; }
           .theme-marine .tweets-feed .feed-header .user-options .options-container li > span {
@@ -1021,7 +1028,7 @@ section {
             .theme-burnt .tweets-feed .feed-header .user-options .options-container li .range-slider .noUi-connect {
               background: #df3636; }
             .theme-burnt .tweets-feed .feed-header .user-options .options-container li .range-slider .noUi-handle {
-              width: 0.625rem;
+              width: 1.3125rem;
               height: 1.3125rem; }
               .theme-burnt .tweets-feed .feed-header .user-options .options-container li .range-slider .noUi-handle::before {
                 left: 0.4375rem;
@@ -1203,7 +1210,7 @@ nav.menu {
   min-width: px2rem180px();
   height: 100vh;
   margin: 0;
-  padding: 3.75rem 0;
+  padding: 3.75rem 0.5rem;
   color: #111111;
   background: rgba(255, 255, 255, 0.85);
   box-sizing: border-box;

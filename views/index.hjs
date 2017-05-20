@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ndko {{ title }}</title>
+    <title>{{ title }}</title>
 
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css' />
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
@@ -19,10 +19,10 @@
       <section class="js-settings-frame slide main-frame">
         <div class="content-box tweets-wrapper flex-row">
           <ul class="user-feed  unstyled">
-
+          
            {{#data}}
-              <li class="js-feed-container scroll-wrapper">
-                <ol id="posts-list" class="tweets-feed unstyled">
+              <li class="js-drop-box scroll-wrapper">
+                <ol class="js-drag-box tweets-feed unstyled posts-list" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)" >
                   <li class="feed-header">
                     <h2>{{id}}</h2>
                     {{> feed_options}}

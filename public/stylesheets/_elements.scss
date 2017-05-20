@@ -356,3 +356,25 @@
   }
 
 }
+
+
+.js-drop-box {
+
+  &.drag-on *:not(:active) {
+    pointer-events: none;
+
+  }
+
+}
+
+.js-drag-box {
+  cursor: move;
+
+  &:active {
+    cursor: grab!important;
+  }
+
+  &.in-transit {
+    opacity: .5;
+  }
+}

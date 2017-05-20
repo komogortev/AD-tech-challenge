@@ -123,6 +123,7 @@
 
           li {
             display: flex;
+            flex-direction: column;
             padding: px2rem(4px);
             color: $marine-inverted-primary;
 
