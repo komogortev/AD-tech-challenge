@@ -1,5 +1,5 @@
 /*global $ */
-/*global Filter */
+/*global Filter:true */
 /*global Store */
 /*global DateFilter */
 /*global AmountFilter */
@@ -16,17 +16,15 @@ Filter = {
       filterId :  'start',
     },
 
-
   },
 
   init: function filtersInit(){
+    'use strict';
 
     Filter.params.filterSettingsCollection = Store.readSettings(Filter.params.storageSettingsKey) === null ?
       {} : Store.readSettings(Filter.params.storageSettingsKey);
 
     Filter.initFilters();
-
-    Filter.updateFilters();
 
   },
 
@@ -38,7 +36,7 @@ Filter = {
     return new Date(str).getTime();
   },
 
-}
+};
 
 /*Switch to dynamic min/max calculation for mixed date feed
   to lose another couple of hours on debugin if you want*/
@@ -54,16 +52,10 @@ Filter = {
 //   return {'startDate': min, 'endDate':max};
 // }
 
-
-
 Filter.findStoredFilter = function filterfindStoredFilter(filterId){
   return Filter.params.filterSettingsCollection[filterId] !== null ?
     Filter.params.filterSettingsCollection[filterId] : false;
-}
-
-Filter.updateFilters = function filterUpdateFilters(){
-
-}
+};
 
 Filter.updateFilterCollection = function filterUpdateFilterCollection(filterId, options) {
 
@@ -74,8 +66,7 @@ Filter.updateFilterCollection = function filterUpdateFilterCollection(filterId, 
   Filter.params.filterSettingsCollection[filterId] = options;
   Store.writeSettings(Filter.params.storageSettingsKey, Filter.params.filterSettingsCollection);
 
-}
-
+};
 
 Filter.bildOptions = function filterBildOptions(el){
 
@@ -84,7 +75,7 @@ Filter.bildOptions = function filterBildOptions(el){
   var storedSettings = Filter.findStoredFilter(elemId);
 
   var range = {'min': 0,'max': 30};
-  options['step'] = 1;
+  options.step = 1;
   //options['padding'] = 4;
   var isDate = el.data('type') === 'date' ? true : false;
 
@@ -93,56 +84,60 @@ Filter.bildOptions = function filterBildOptions(el){
     var maxD = Filter.timestamp($(el).closest('ol.tweets-feed').find('li.tweet-box').first().find('time').data('original'));
     var minD = Filter.timestamp($(el).closest('ol.tweets-feed').find('li.tweet-box').last().find('time').data('original'));
 
-    options['type'] =  'date';
-    options['start'] = storedSettings ? storedSettings : [minD, maxD];
-    options['connect'] = true;
-    options['format'] = wNumb({decimals: 0});
-    options['step'] = (maxD - minD) / 10;
-    options['range'] = {
+    options.type =  'date';
+    options.start = storedSettings ? storedSettings : [minD, maxD];
+    options.connect = true;
+    options.format = wNumb({decimals: 0});
+    options.step = (maxD - minD) / 10;
+    options.range = {
       min: minD,
       max: maxD,
     };
 
-    return {elemId,options};
-
   } else {
 
-    options['type'] =  'amount';
-    options['start'] =  storedSettings ? parseFloat(storedSettings) : 100;
-    options['connect'] = [true, false];
-    tooltips: wNumb({ decimals: 0 }),
-    options['range'] = {
+    options.type =  'amount';
+    options.start =  storedSettings ? parseFloat(storedSettings) : 100;
+    options.connect = [true, false];
+    options.tooltips = wNumb({ decimals: 0 });
+    options.range = {
       min: 0,
       max: $(el).closest('ol.tweets-feed').find('li.tweet-box').length
     };
 
-    return {elemId,options};
   }
 
-}
+  return {elemId: elemId, options: options};
+
+};
 
 Filter.signTooltip = function filterSignTooltip(elemId, options){
+
   var $tooltip = $('#'+elemId).closest('ol.tweets-feed')
     .find('.js-'+options.type+'-tooltip');
+
   var tooptipValue = options.type == 'date' ?
    Filter.normalizeDate(options.start[0])+' - '+Filter.normalizeDate(options.start[1]):
    options.start;
 
   $tooltip.html(tooptipValue);
-}
+
+};
 
 Filter.create = function filterCreate(id, options){
+
   var filterId = document.getElementById(id);
+
   noUiSlider.create(filterId,options)
     .on('set.sliderFilter',  function(values, handle){
       Filter.handleChange(this, values, handle);
     });
-    filterId.noUiSlider.set(options.start);
-}
 
-Filter.findInstances = function filterFindInstances(target){
-  return $(target);
-}
+  filterId.noUiSlider.set(options.start);
+
+};
+
+Filter.findInstances = function filterFindInstances(target){ return $(target); };
 
 Filter.initFilter = function filterInitFilter(filterType){
 
@@ -161,7 +156,7 @@ Filter.initFilter = function filterInitFilter(filterType){
 
   });
 
-}
+};
 
 Filter.initFilters = function filterInitFilters(){
 
@@ -171,30 +166,34 @@ Filter.initFilters = function filterInitFilters(){
      Filter.initFilter(item);
   });
 
-}
-
-
+};
 
 Filter.normalizeDate = function filterNormalizeDate(milliseconds) {
- var formattedDate = new Date(parseInt(milliseconds)).toLocaleString('en-US', Filter.dateOptions )
-      .replace(/([a-zA-Z]+) (\d{1,2}\,)/, '$2 $1').replace(',','');
-    var formattedTime = new Date(parseInt(milliseconds)).toLocaleString('en-US', Filter.timeOptions );
 
-    return formattedTime + ', ' + formattedDate;
-}
+  var formattedDate = new Date(parseInt(milliseconds)).toLocaleString('en-US', Filter.dateOptions )
+      .replace(/([a-zA-Z]+) (\d{1,2}\,)/, '$2 $1').replace(',','');
+  var formattedTime = new Date(parseInt(milliseconds)).toLocaleString('en-US', Filter.timeOptions );
+
+  return formattedTime + ', ' + formattedDate;
+
+};
 
 Filter.updateFeedView = function filterUpdateFeedView(parentFeed, selector){
+
   parentFeed.find('li.tweet-box').show();
   parentFeed.find(selector).hide();
-}
+
+};
 
 Filter.findLimitsIndex = function filterfindLimitsIndex(parentFeed, dateLimits){
+
   var lowerLimit = dateLimits[0],
       upperLimit = dateLimits[1],
       lowerIndex = null,
       upperIndex = null;
 
   $(parentFeed).children('.tweet-box').each(function(index){
+
     if (lowerIndex === null && $(this).data('ms-range') < lowerLimit){
        lowerIndex = index;
     }
@@ -202,10 +201,12 @@ Filter.findLimitsIndex = function filterfindLimitsIndex(parentFeed, dateLimits){
        upperIndex = index;
     }
     if (upperIndex !== null && lowerIndex !== null) return false;
- });
+
+  });
 
   return 'li.tweet-box:nth-child(-n+' + (upperIndex)  + '):nth-child(n+' + (lowerIndex)  + ')';
-}
+
+};
 
 Filter.handleChange = function filterHandleChange(elem, values, handle){
 
@@ -214,22 +215,20 @@ Filter.handleChange = function filterHandleChange(elem, values, handle){
     parentFeed = $(elem.target).closest('ol.tweets-feed'),
     displayBox = parentFeed.find('.js-'+type+'-tooltip'),
     zeroNstartAdjust = 2,
-    amountShown = tooptipValue = parseFloat(newValue),
-    amountSelector = 'li.tweet-box:nth-child(n+' + (amountShown + zeroNstartAdjust)  + '):visible';
+    amountShown = parseFloat(newValue),
+    amountSelector = 'li.tweet-box:nth-child(n+' + (amountShown + zeroNstartAdjust)  + '):visible',
+    lowerDate, upperDate;
 
-  if(type ==='date'){
-    var lowerDate = Filter.normalizeDate(values[0]),
-        upperDate = Filter.normalizeDate(values[1]),
-        tooptipValue = lowerDate + ' - ' + upperDate;
-    //console.log(Filter.findLimitsIndex(parentFeed, values));
-     //$(parentFeed).find(Filter.findLimitsIndex(parentFeed, values)).hide();
-
+  if(type === 'date'){
+    lowerDate = Filter.normalizeDate(values[0]);
+    upperDate = Filter.normalizeDate(values[1]);
+    //$(parentFeed).find(Filter.findLimitsIndex(parentFeed, values)).hide();
   }
 
   Filter.updateFeedView(parentFeed, amountSelector);
   Filter.updateFilterCollection($(elem.target).attr('id') , values);
-  $(displayBox).html(tooptipValue);
+  $(displayBox).html(type === 'date' ? lowerDate + ' - ' + upperDate : amountShown);
 
-}
+};
 
 Filter.init();

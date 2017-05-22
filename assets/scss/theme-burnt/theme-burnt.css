@@ -1,4 +1,4 @@
-@import "_variables";
+@import "../variables";
 
 .theme-burnt {
   background: $burnt-inverted-secondary;
@@ -8,7 +8,7 @@
     padding: px2rem(4px)  px2rem(10px);
     color: $burnt-primary-color;
     background: $burnt-bg-muted;
-    border: none;
+    border: 0;
 
     &:hover,
     &:focus,
@@ -61,7 +61,7 @@
       color: $burnt-inverted-secondary;
       background: $burnt-secondary-color;
       box-shadow: px2rem(2px) px2rem(2px) px2rem(10px) $burnt-bg-smoke;
-      text-ellipsis: ellipsis;
+      text-overflow: ellipsis;
       white-space: nowrap;
     }
 
@@ -89,7 +89,7 @@
 
           [class^=icon] {
             font-size: px2rem(18px);
-            color: lightenBy($burnt-primary-color, 4);
+            color: lighten-by($burnt-primary-color, 4);
           }
 
           .fa-gear {
@@ -151,19 +151,18 @@
               }
 
               .noUi-handle {
-                width: px2rem(21px);
+                width: px2rem(10px);
                 height: px2rem(21px);
+              }
 
-                &::before {
-                  left: px2rem(7px);
-                  top: px2rem(2px);
-                }
+              .noUi-handle::before {
+                left: px2rem(7px);
+                top: px2rem(2px);
+              }
 
-                &::after {
-                  left: px2rem(10px);
-                  top: px2rem(2px);
-                }
-
+              .noUi-handle::after {
+                left: px2rem(10px);
+                top: px2rem(2px);
               }
 
             }
@@ -174,7 +173,7 @@
 
         &.is-active {
 
-          .options-container{
+          .options-container {
             @include toggle-active;
           }
 
@@ -202,8 +201,8 @@
     @include default-box;
     color: $burnt-primary-color;
     background: $burnt-inverted-primary;
-    border-radius: px2rem(4px) px2rem(4px);
-    border: none;
+    border-radius: px2rem(4px);
+    border: 0;
     padding: px2rem(14px);
     margin: px2rem(6px);
     box-shadow: inset 0 0 px2rem(8px) $burnt-bg-smoke;
@@ -244,7 +243,6 @@
         line-height: 0;
         max-width: 100%;
         overflow: hidden;
-        white-space: nowrap;
         text-overflow: ellipsis;
         color: inherit;
         text-decoration: none;
@@ -262,7 +260,7 @@
           }
 
           &.screen-name {
-            color: lightenBy($burnt-primary-color, 4);
+            color: lighten-by($burnt-primary-color, 4);
 
             &::before {
               content: "@";
@@ -279,20 +277,20 @@
 
     .tweet-body {
 
-      p.tweet-text {
+      .tweet-text {
         margin: px2rem(15px) 0;
       }
 
     }
 
     .tweet-metadata {
-      color: lightenBy($burnt-primary-color, 4);
+      color: lighten-by($burnt-primary-color, 4);
       font-size: .8em;
     }
 
     .tweet-tools {
       margin-top: px2rem(15px);
-      color: lightenBy($burnt-primary-color, 4);
+      color: lighten-by($burnt-primary-color, 4);
 
       > ul {
         list-style: none;
@@ -312,7 +310,7 @@
       .fa-reply,
       .fa-retweet,
       .fa-favorite {
-        color: lightenBy($burnt-primary-color, 4);
+        color: lighten-by($burnt-primary-color, 4);
 
         &:hover,
         &:active,
@@ -340,12 +338,12 @@
       color: $burnt-inverted-primary;
       font-size: px2rem(12px);
       text-align: center;
-      padding: px2rem( 5px) 0;
+      padding: px2rem(5px) 0;
       border-radius: px2rem(2px);
       transform: translate(-100%, -50%);
       visibility: hidden;
       transition: opacity 1s ease-out;
-       transition-delay: 1.75s;
+      transition-delay: 1.75s;
       z-index: 1;
 
       &::after {
@@ -366,6 +364,34 @@
     &:hover .tooltiptext {
       opacity: 1;
       visibility: visible;
+    }
+
+  }
+
+}
+;@import "../variables";
+
+.theme-burnt {
+
+  section {
+
+    &.slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: px2rem(10px) 0;
+      box-shadow: inset px2rem(2px) px2rem(2px) px2rem(6px) $burnt-bg-smoke;
+
+      .content-box {
+        @include default-box;
+        margin: px2rem(10px);
+        max-width: 100%;
+
+        &.tweets-wrapper {
+          background: transparent;
+        }
+      }
     }
 
   }

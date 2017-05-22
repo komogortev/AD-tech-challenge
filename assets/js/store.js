@@ -1,7 +1,8 @@
-/* global Store */
+/* global Store:true */
 /* global localStorage */
 
 Store = {
+
   isAvailable: function checkLocalStorageStatus() {
     var test = 'test';
     try {

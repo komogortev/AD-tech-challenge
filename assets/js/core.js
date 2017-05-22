@@ -1,5 +1,5 @@
 /* global $ */
-/* global Core */
+/* global Core:true */
 /* global Store */
 /* global location */
 
@@ -11,6 +11,7 @@ Core = {
   },
 
   init: function coreInit() {
+    'use strict';
 
     Core.params.pageSettingsCollection = Store.readSettings(Core.params.storageSettingsKey);
 
@@ -50,7 +51,7 @@ Core.handleDrag = function coreHandleDrag(){
       donor.remove('.js-drag-box').append(replacement);
       recipient.remove('.js-drag-box').append( dragged );
   });
-}
+};
 
 Core.handleToggle = function coreHandleToggle() {
 
@@ -71,8 +72,7 @@ Core.handleToggle = function coreHandleToggle() {
 Core.sortUsers = function coreSortUsers(order) {
   //having given 3 user feeds is required amount at all times
   //otherwise dynamic assigning in loop through the children required
-  var userFeeds = $('.user-feed').find('.js-feed-container');
-
+  var userFeeds = $('.user-feed').find('.js-drop-box');
 
   switch (order) {
     case 'order-asc':
@@ -86,32 +86,43 @@ Core.sortUsers = function coreSortUsers(order) {
 
       userFeeds.each(function(index){
         $(this).css('order', userFeeds.length - index);
-        console.log(userFeeds.length - index)
+        console.log(userFeeds.length - index);
       });
 
       break;
     case 'order-mix':
+
       for(var i, tmpArr=[i=1]; i<userFeeds.length;tmpArr[i++]=parseInt(Math.random() * i));
       userFeeds.each(function(index){
         $(this).css('order', tmpArr[index]);
       });
       break;
+
     default:
       return false;
-    break;
+    //break;
   }
 
-}
+};
 
 Core.resetSettings = function coreResetSettings() {
 
-  let attemtToReset = new Promise((resolve, reject) => {
-    resolve(Store.reset(Core.params.storageSettingsKey));
+  var attemtToReset = new Promise( function(resolve, reject) {
+    resolve( Store.reset(Core.params.storageSettingsKey) );
   });
 
-  attemtToReset.then(() => {
+  attemtToReset.then(function(){
     location.reload();
   });
+
+  //uglifier does not allow es6 heresy :(
+  // let attemtToReset = new Promise((resolve, reject) => {
+  //   resolve(Store.reset(Core.params.storageSettingsKey));
+  // });
+
+  // attemtToReset.then(() => {
+  //   location.reload();
+  // });
 
 };
 
@@ -121,7 +132,7 @@ Core.switchClassTrigger = function coreSwitchClassTrigger(prefix, settingClass) 
 
   $('body')[0].className = $('body')[0].className.replace(regexKey, '');
   $('body').addClass(settingClass);
-}
+};
 
 Core.updateClassCollection = function coreUpdateClassCollection(settingClass) {
 
@@ -132,18 +143,22 @@ Core.updateClassCollection = function coreUpdateClassCollection(settingClass) {
   }
 
   switch (settingPrefix){
-    case 'order': case 'order': case 'order':
+    case 'order':
       Core.sortUsers(settingClass);
     break;
+    case 'theme':
+      $('link[rel=stylesheet][href*="' + settingPrefix + '"]').remove();
+      $('<link/>', {rel: 'stylesheet', href: 'stylesheets/'+ settingClass + '.css'}).appendTo('head');
+      break;
     case 'reset':
       Core.resetSettings();
       return false;
-    break;
+    //break;
   }
 
   Core.switchClassTrigger(settingPrefix, settingClass);
 
-  Core.params.pageSettingsCollection = $('body')[0].className
+  Core.params.pageSettingsCollection = $('body')[0].className;
   Store.writeSettings(Core.params.storageSettingsKey,Core.params.pageSettingsCollection);
 };
 

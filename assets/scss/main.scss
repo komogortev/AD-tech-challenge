@@ -1,13 +1,8 @@
-@import "_variables";
-@import "_icons";
-@import "_layout";
-@import "./theme-marine/_layout_marine";
-@import "./theme-burnt/_layout_burnt";
-@import "_elements";
-@import "./theme-marine/_elements_marine";
-@import "./theme-burnt/_elements_burnt";
-@import "_menu";
-
+@import "variables";
+@import "icons";
+@import "layout";
+@import "elements";
+@import "menu";
 
 //*CONTENT*/
 .figure-wrapper {
@@ -18,7 +13,7 @@
   border-radius: 50%;
   margin: px2rem(10px);
   transform: translate(0, -20%);
-  box-shadow: px2rem(5px) px2rem(5px) px2rem(10px) rgba(0, 0, 0, 0.75);
+  box-shadow: px2rem(5px) px2rem(5px) px2rem(10px) $black-almostfilled;
   overflow: hidden;
 
   @media screen and (max-width: $break-medium) {
@@ -27,7 +22,8 @@
 
   img {
     display: inline-block;
-     width: 100%;
-     height: auto;
+    width: 100%;
+    height: auto;
   }
+
 }

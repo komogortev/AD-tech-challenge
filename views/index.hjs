@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ title }}</title>
+    <title>{{title}}</title>
 
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css' />
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
     <link rel="stylesheet" href="/vendor/noUiSlider/nouislider.min.css" >
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/main.css' />
   </head>
   <body>
 
-    <header><h1>Twitter REST API Technical Challenge</h1></header>
+    <header><h1>{{title}}</h1></header>
 
     <div class="site-wrapper">
 
@@ -18,10 +18,11 @@
 
       <section class="js-settings-frame slide main-frame">
         <div class="content-box tweets-wrapper flex-row">
+
           <ul class="user-feed  unstyled">
-          
+
            {{#data}}
-              <li class="js-drop-box scroll-wrapper">
+              <li class="js-drop-box feed-container scroll-wrapper">
                 <ol class="js-drag-box tweets-feed unstyled posts-list" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)" >
                   <li class="feed-header">
                     <h2>{{id}}</h2>
@@ -46,9 +47,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
     <script type="text/javascript" charset="UTF-8" src="/vendor/noUiSlider/nouislider.min.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="/javascripts/store.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="/javascripts/core.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="/javascripts/filter.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/javascripts/appdirect.min.js"></script>
 
   </body>
 </html>

@@ -1,4 +1,4 @@
-@import "_variables";
+@import "../variables";
 
 .theme-marine {
   background: $marine-inverted-primary;
@@ -12,7 +12,7 @@
     padding: px2rem(4px) px2rem(10px);
     color: $marine-primary-color;
     background: $marine-bg-muted;
-    border: none;
+    border: 0;
 
     &:hover,
     &:focus,
@@ -59,8 +59,8 @@
       text-align: center;
       border-radius: px2rem(4px);
       color: $marine-secondary-color;
-      box-shadow: inset 0 0 px2rem(30px) rgba(94, 177, 191, 1);
-      text-ellipsis: ellipsis;
+      box-shadow: inset 0 0 px2rem(30px) $marine-box-shadow;
+      text-overflow: ellipsis;
       white-space: nowrap;
       text-transform: uppercase;
     }
@@ -88,7 +88,7 @@
 
           [class^=icon] {
             font-size: px2rem(18px);
-            color: lightenBy($marine-primary-color, 4);
+            color: lighten-by($marine-primary-color, 4);
           }
 
           .fa-gear {
@@ -123,7 +123,6 @@
 
           li {
             display: flex;
-            flex-direction: column;
             padding: px2rem(4px);
             color: $marine-inverted-primary;
 
@@ -153,18 +152,18 @@
               .noUi-handle {
                 width: px2rem(21px);
                 height: px2rem(21px);
-
-                &::before {
-                  left: px2rem(7px);
-                  top: px2rem(2px);
-                }
-
-                &::after {
-                  left: px2rem(10px);
-                  top: px2rem(2px);
-                }
-
               }
+
+              .noUi-handle::before {
+                left: px2rem(7px);
+                top: px2rem(2px);
+              }
+
+              .noUi-handle::after {
+                left: px2rem(10px);
+                top: px2rem(2px);
+              }
+
 
             }
 
@@ -202,8 +201,8 @@
     @include default-box;
     color: $marine-primary-color;
     background: $marine-extra;
-    border-radius: px2rem(4px) px2rem(4px);
-    border: none;
+    border-radius: px2rem(4px);
+    border: 0;
     padding: px2rem(14px);
     margin: px2rem(6px);
     box-shadow: px2rem(2px) px2rem(2px) px2rem(4px) $marine-inverted-secondary;
@@ -244,7 +243,6 @@
         line-height: 0;
         max-width: 100%;
         overflow: hidden;
-        white-space: nowrap;
         text-overflow: ellipsis;
         color: inherit;
         text-decoration: none;
@@ -262,7 +260,7 @@
           }
 
           &.screen-name {
-            color: lightenBy($marine-primary-color, 4);
+            color: lighten-by($marine-primary-color, 4);
 
             &::before {
               content: "@";
@@ -279,7 +277,7 @@
 
     .tweet-body {
 
-      p.tweet-text {
+      .tweet-text {
         font-size: .9em;
         margin: px2rem(10px) 0;
       }
@@ -287,13 +285,13 @@
     }
 
     .tweet-metadata {
-      color: lightenBy($marine-primary-color, 4);
+      color: lighten-by($marine-primary-color, 4);
       font-size: .8em;
     }
 
     .tweet-tools {
       margin-top: px2rem(15px);
-      color: lightenBy($marine-primary-color, 4);
+      color: lighten-by($marine-primary-color, 4);
 
       > ul {
         list-style: none;
@@ -318,7 +316,7 @@
         &:hover,
         &:active,
         &:focus {
-          color: darkenBy($marine-inverted-secondary, 2);
+          color: darken-by($marine-inverted-secondary, 2);
         }
 
       }
@@ -367,6 +365,39 @@
     &:hover .tooltiptext {
       opacity: 1;
       visibility: visible;
+    }
+
+  }
+
+}
+;@import "../variables";
+
+.theme-marine {
+
+  section {
+    @include default-box;
+    position: relative;
+    width: 100%;
+
+    &.slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: px2rem(10px) 0;
+      box-shadow: inset px2rem(2px) px2rem(2px) px2rem(6px) $marine-bg-smoke;
+
+      .content-box {
+        @include default-box;
+        margin: px2rem(10px);
+        max-width: 100%;
+
+        &.tweets-wrapper {
+          background: transparent;
+        }
+
+      }
+
     }
 
   }

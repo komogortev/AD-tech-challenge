@@ -1,0 +1,114 @@
+# # # # # # # # # # # # # # # # # # # # # # # # #
+# SCSS-Lint Project Config
+# # # # # # # # # # # # # # # # # # # # # # # # #
+
+# Find more info about rules on the official documentation
+# https://github.com/brigade/scss-lint/blob/master/lib/scss_lint/linter/README.md
+
+# If you need to break a specific rule for a good reason...
+# you can tell sass-lint to ignore a specific area in the code:
+# https://github.com/brigade/scss-lint/#disabling-linters-via-source
+
+## ERRORS # # # # # # # # # # # # # # # # # # # #
+# By default, throw an ERROR on any broken rule
+severity: error
+
+linters:
+
+  # All configs are inherited from the SCSS-Lint default config
+  # https://github.com/brigade/scss-lint/blob/master/config/default.yml
+
+  # Let's overwrite some rules from the default SCSS-Lint config
+
+
+  # Please justify why you need to disable the linter
+  DisableLinterReason:
+    enabled: false
+
+  # Consecutive Duplicate Properties mean you want to set a fallback
+  DuplicateProperty:
+    ignore_consecutive: true
+
+  # Colors should be all uppercase
+  HexNotation:
+    style: uppercase
+
+  # Ignore import path
+  ImportPath:
+    enabled: false
+
+  # Indent with 2 spaces
+  Indentation:
+    width: 2
+
+  # Avoid nesting too much
+  NestingDepth:
+    max_depth: 8
+
+  # Avoid selector depth
+  SelectorDepth:
+    max_depth: 8
+
+  SelectorFormat:
+    enabled: false
+
+  # Sort properties following the Concentric style
+  # see http://rhodesmill.org/brandon/2011/concentric-css/
+  # or https://github.com/brandon-rhodes/Concentric-CSS/blob/master/style.css
+  PropertySortOrder:
+    enabled: false
+    separate_groups: false
+    order: concentric
+
+  # Check for spelling errors
+  PropertySpelling:
+    # We might need to whitelist some properties if they are too recent
+    extra_properties: []
+    # We can also blacklist some properties from being used
+    disabled_properties: []
+
+  # Whitelist specific units for specific properties
+  PropertyUnits:
+    properties: {}
+
+  # Allow additional space when multiple single line
+  SpaceBeforeBrace:
+    allow_single_line_padding: true
+
+  # Prefer double quotes (in SCSS/CSS only)
+  StringQuotes:
+    style: double_quotes
+
+  # Avoid trailing zero
+  TrailingZero:
+    enabled: true
+
+
+  ## WARNINGS # # # # # # # # # # # # # # # # # #
+  # The following rules are more of a guideline
+
+
+  # It's better to declare all colors in a variable
+  ColorVariable:
+    severity: warning
+
+  # It's better to not include empty rules
+  EmptyRule:
+    severity: warning
+
+  # It's best to avoid styling with IDs
+  IdSelector:
+    severity: warning
+
+  # It's best to extend a placeholder than a real class
+  PlaceholderInExtend:
+    severity: warning
+
+  # Prefer shorthand notation, but do not force it
+  Shorthand:
+    severity: warning
+
+  # Prefer specific transitions
+  TransitionAll:
+    enabled: true
+    severity: warning

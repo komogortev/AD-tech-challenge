@@ -1,11 +1,8 @@
-@import "_variables";
+@import "../variables";
 
-.theme-marine {
+.theme-burnt {
 
   section {
-    @include default-box;
-    position: relative;
-    width: 100%;
 
     &.slide {
       display: flex;
@@ -13,7 +10,7 @@
       align-items: center;
       margin: 0;
       padding: px2rem(10px) 0;
-      box-shadow: inset px2rem(2px) px2rem(2px) px2rem(6px) $marine-bg-smoke;
+      box-shadow: inset px2rem(2px) px2rem(2px) px2rem(6px) $burnt-bg-smoke;
 
       .content-box {
         @include default-box;
@@ -23,9 +20,7 @@
         &.tweets-wrapper {
           background: transparent;
         }
-
       }
-
     }
 
   }

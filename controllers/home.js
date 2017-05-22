@@ -29,9 +29,13 @@ router.get('/', function(req, res, next) {
 
   });
 
+  console.log( 'result  :', data );
+
+
   //temporary chubby resp
   res.render('index', {
-      title:      'Test Twitter REST API',
+      title:      'Dev Test Twitter REST API',
+      pagetitle: 'Dev Test Index POST',
       partials: {
           menu:         'menu',
           feed_options: 'feed_options',
@@ -45,9 +49,10 @@ router.get('/', function(req, res, next) {
 
 
 router.post('/', function(req, res, next) {
-    //@todo add action to pull next page with tweets for requested user
+
     res.render('index', {
-        pagetitle: 'REST API request handler',
+        title: 'Test Home page for POST request',
+        pagetitle: 'Test Index POST',
     });
 });
 

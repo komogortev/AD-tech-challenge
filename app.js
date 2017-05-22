@@ -5,6 +5,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+// require hogan
+var hogan = require("hogan.js");
+// construct template string
+var template = hogan.compile("@{{index}}");
+// compile template
+var hello = hogan.compile(template);
+
+
 var router = express.Router();
 
 //init app
@@ -79,7 +88,6 @@ if( typeof app.locals.tweetsCache.get('tweetLastRequest') === 'undefined'
   fnHelper.readTweetsFile();
 }
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hjs');
@@ -91,27 +99,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); //allow to perform post request
 
 app.use(cookieParser());
-//sass preprocessor
-app.use(require('node-sass-middleware')({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  indentedSyntax: false,
-  sourceMap: true
-}));
+
 //use generated files in public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
-
-//declare routs for use moved in controllers(routes*)
-//app.use('/', index);
-//app.use('/users', users);
-
 //load constollers (router*)
 app.use(require('./controllers'));
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

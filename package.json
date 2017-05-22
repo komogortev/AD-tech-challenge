@@ -4,32 +4,49 @@
   "description": "pull 30 tweets",
   "main": "app.js",
   "repository": "",
-  "author": "Mostafa Eweda <mo.eweda@gmail.com>",
+  "author": "Igor Komogortev <igor.komogortev@gmail.com>",
   "engines": {
     "node": "6.9.4",
     "npm": "3.10.10"
   },
   "dependencies": {
     "async": "~0.2.8",
+    "autoprefixer": "^7.1.1",
     "body-parser": "~1.16.0",
     "cookie-parser": "~1.4.3",
+    "cssnano": "^3.10.0",
     "debug": "~2.6.0",
     "express": "~4.14.1",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-qunit": "^2.0.0",
+    "grunt-contrib-uglify": "^3.0.1",
+    "grunt-eslint": "^19.0.0",
+    "grunt-postcss": "^0.8.0",
+    "grunt-sass": "^2.0.0",
+    "grunt-scss-lint": "^0.5.0",
     "hjs": "~0.0.6",
+    "hogan.js": "^3.0.2",
+    "http-server": "^0.9.0",
+    "load-grunt-tasks": "^3.5.2",
     "morgan": "~1.7.0",
     "node-cache": "^4.1.1",
     "node-persist": "^2.0.11",
-    "node-sass-middleware": "^0.9.8",
     "nodemon": "^1.11.0",
     "portfinder": "^1.0.13",
     "prompt": "^1.0.0",
     "qs": "^6.4.0",
     "request": "^2.81.0",
+    "sass-lint": "^1.10.2",
     "serve-favicon": "~2.3.2",
     "socket.io": "~0.9.14",
     "twitter": "^1.7.0"
   },
+  "sasslintConfig": "config/.sass-lint.yml",
   "scripts": {
-    "start": "node ./bin/www"
+    "grunt": "grunt",
+    "start": "grunt && node ./bin/www"
   }
 }

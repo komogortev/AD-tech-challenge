@@ -16,7 +16,7 @@
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     display: block;
     width: 100%;
     position: absolute;
@@ -27,8 +27,8 @@
     height: 100%;
     border: .22em solid $primary-color;
     border-color: inherit;
-    border-left: none;
-    border-right: none;
+    border-left: 0;
+    border-right: 0;
     background: transparent;
     box-sizing: border-box;
     top: 0;
@@ -113,13 +113,13 @@
       transform: translate(-50%, -80%);
     }
 
-    &::after{
+    &::after {
       display: none;
     }
 
   }
 
-  &.order-desc{
+  &.order-desc {
 
     &::before,
     &::after {
@@ -132,7 +132,7 @@
     }
 
     &::after {
-     display: none;
+      display: none;
     }
 
   }
@@ -158,7 +158,6 @@
 .icon-theme {
   width: 1em;
   height: 1.35em;
-  border: px2rem(1px) solid $inverted-primary;
   background: transparent;
   border: px2rem(1px) solid $inverted-primary;
 
@@ -173,8 +172,8 @@
     border-radius: 50%;
     border-top: px2rem(8px) solid;
     border-right: px2rem(8px) solid;
-    border-left: none;
-    border-bottom: none;
+    border-left: 0;
+    border-bottom: 0;
   }
 
   &.theme-blueprint::before {
@@ -189,15 +188,11 @@
   }
 
   &.theme-marine::before {
-    border-color: #006daa;
+    border-color: $marine-border;
   }
 
   &.theme-burnt::before {
-    border-color: #7c3626;
-  }
-
-  &.theme-daylight::before {
-    border-color: #ffcdbc;
+    border-color: $burnt-border;
   }
 
 }

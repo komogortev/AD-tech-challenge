@@ -9,50 +9,60 @@ $break-medium: px2rem(768px);
 $break-small:  px2rem(400px);
 $break-xsmall: px2rem(320px);
 
-/*WIREFRAME*/
-$primary-color: #111111;
-$inverted-primary: #f1f1f1;
-$secondary-color: #cc0000;
-$inverted-secondary: #5d7cdd;
-$bg-fog: rgba(255,255,255,.85);
-$bg-smoke: rgba(0,0,0,.85);
+//*WIREFRAME*/
+$primary-color: #111;
+$inverted-primary: #F1F1F1;
+$secondary-color: #C00;
+$inverted-secondary: #5D7CDD;
+$bg-fog: rgba(255, 255, 255, .85);
+$bg-smoke: rgba(0, 0, 0, .85);
 $bg-muted: lighten($primary-color, 50%);
 $bg-primary: $primary-color;
 $bg-secondary: $secondary-color;
+$box-shadow: rgba(100, 100, 100, .2);
+$transparent: rgba(255, 255, 255, 0);
+$white-barelyfilled: rgba(255, 255, 255, .25);
+$white-semifilled: rgba(255, 255, 255, .5);
+$white-filled: rgba(255, 255, 255, 1);
+$black-almostfilled: rgba(0, 0, 0, .75);
 
-/*MARINE*/
-$marine-primary-color: #00072d;
-$marine-inverted-primary: #a6e1fa;
-$marine-secondary-color: #0a2463;
-$marine-inverted-secondary: #5eb1bf;
-$marine-extra: #cdedf6;
-$marine-bg-fog: rgba(255,255,255,.85);
-$marine-bg-smoke: rgba(0, 7, 45,.85);
+//*MARINE*/
+$marine-primary-color: #00072D;
+$marine-inverted-primary: #A6E1FA;
+$marine-secondary-color: #0A2463;
+$marine-inverted-secondary: #5EB1BF;
+$marine-extra: #CDEDF6;
+$marine-bg-fog: rgba(255, 255, 255, .85);
+$marine-bg-smoke: rgba(0, 7, 45, .85);
 $marine-bg-muted: lighten($marine-primary-color, 50%);
 $marine-bg-primary: $marine-primary-color;
 $marine-bg-secondary: $marine-secondary-color;
+$marine-border: #006DAA;
+$marine-box-shadow: rgba(94, 177, 191, 1);
 
-/*BURNT*/
+//*BURNT*/
 $burnt-primary-color: #130303;
-$burnt-inverted-primary: #ffcdbc;
-$burnt-secondary-color: #f5853f;
-$burnt-inverted-secondary: #7c3626;
-$burnt-extra: #2d080a;
-$burnt-bg-fog: rgba(255, 205, 188,.85);
-$burnt-bg-smoke: rgba(19, 3, 3,.85);
+$burnt-inverted-primary: #FFCDBC;
+$burnt-secondary-color: #F5853F;
+$burnt-inverted-secondary: #7C3626;
+$burnt-extra: #2D080A;
+$burnt-bg-fog: rgba(255, 205, 188, .85);
+$burnt-bg-smoke: rgba(19, 3, 3, .85);
 $burnt-bg-muted: lighten($burnt-primary-color, 50%);
 $burnt-bg-primary: $burnt-primary-color;
 $burnt-bg-secondary: $burnt-secondary-color;
+$burnt-border: #7C3626;
 
-//PLACEHOLDERS
+//*PLACEHOLDERS*/
 %default-box {
   display: block;
   margin: 0;
-  padding:0;
+  padding: 0;
   font-size: $root-font;
   box-sizing: border-box;
 }
-%default-border-radius{
+
+%default-border-radius {
   border-radius: px2rem(4px);
 }
 
@@ -69,7 +79,7 @@ $burnt-bg-secondary: $burnt-secondary-color;
 @mixin default-box {
   display: block;
   margin: 0;
-  padding:0;
+  padding: 0;
   font-size: $root-font;
   box-sizing: border-box;
 }
@@ -86,22 +96,22 @@ $burnt-bg-secondary: $burnt-secondary-color;
 }
 
 //*FUNCTIONS*/
-@function step2percent($step){
+@function step2percent($step) {
   @return ($step * $gradation-step);
 }
 
-@function darkenBy($base, $step) {
+@function darken-by($base, $step) {
   @return darken($base, step2percent($step));
 }
 
-@function lightenBy($base, $step) {
+@function lighten-by($base, $step) {
   @return lighten($base, step2percent($step));
 }
 
-@function randomNum($min, $max) {
+@function random-num($min, $max) {
   $rand: random();
-  $randomNum: $min + floor($rand * (($max - $min) + 1));
-  @return $randomNum;
+  $random-num: $min + floor($rand * (($max - $min) + 1));
+  @return $random-num;
 }
 
 @function px2rem($target) {
